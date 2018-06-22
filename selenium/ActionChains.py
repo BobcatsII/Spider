@@ -10,3 +10,4 @@ target = browser.find_element_by_id('droppable')    #终点
 actions = ActionChains(browser)               
 actions.drag_and_drop(source, target)               #drag_and_drop()方法
 actions.perform()                                   #执行
+
