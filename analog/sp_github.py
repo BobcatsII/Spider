@@ -20,6 +20,18 @@
 
 
 
+import requests
+
 class Login(object):
-  def __init__(self):
+    def __init__(self):
+        self.headers = {
+          "Referer": "https://github.com/login",
+          "Upgrade-Insecure-Requests": "1",
+          "User-Agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36",
+          "Host":"github.com"
+        }
+        self.login_url = 'https://github.com/login'
+        self.post_url = 'https://github.com/session'
+        self.logined_url = 'https://github.com/setting/profile'
+        self.session = requests.Session()
     
