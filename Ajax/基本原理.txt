@@ -1,0 +1,10 @@
+Ajax 是异步的 JavaScript 和 XML
+利用JavaScript在保证页面不被刷新、页面链接不改变的情况下与服务器交换数据并更新部分网页的技术。
+
+发送Ajax的请求到网页更新的这个过程可以简单分为以下三部：
+1.发送请求
+    新建 XMLHttpRequest 对象，然后调用onreadystatechange 属性设置了监听，然后调用 open() 和 send() 方法向某个链接发送请求。
+2.解析内容
+    得到响应后，onreadystatechange 属性对应的方法被触发，此时利用 xmlhttp 的responseText 属性便可取到响应内容。
+3.渲染网页
+    解析玩响应内容后，调用JavaScript来针对解析完的内容对网页进行下一步处理。
