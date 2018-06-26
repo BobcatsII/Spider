@@ -21,6 +21,7 @@
 
 
 import requests
+from lxml import etree
 
 class Login(object):
     def __init__(self):
@@ -32,6 +33,57 @@ class Login(object):
         }
         self.login_url = 'https://github.com/login'
         self.post_url = 'https://github.com/session'
-        self.logined_url = 'https://github.com/setting/profile'
+        self.logined_url = 'https://github.com/settings/profile'
         self.session = requests.Session()
+
+
+
+    def token(self):
+        response = self.session.get(self.login_url)
+        html = response.text
+        s = etree.HTML(html)
+        t = s.xpath('//input[@name="authenticity_token"]')[0]
+        token = t.attrib['value']
+        print (token)
+        return token
+
+
+
+
+    def dynamics(self, html):
+        tree = etree.HTML(html)
+        s = tree.xpath('//div[contains(@class, "news")]//div[contains(@class, "body")]/div/')
+        print (user1)
+        # for item in dynamics:
+        #     print (item.text)
+        #     txt = ' '.join(item.xpath('.//div/@class//text()')).strip()
+        #     return txt
+
+    # def profile(self, html):
+    #     sp = etree.HTML(html)
+    #     profile = sp.xpath('//ul/li/div/a/span[2]/text()')
+    #     return profile
+
+
+    def login(self, user, passwd):
+        post_data = {
+            "commit": "Sign in",
+            "utf8": "✓",
+            "authenticity_token": self.token(),
+            "login": user,
+            "password": passwd
+        }
+        res = self.session.post(self.post_url, data=post_data, headers=self.headers)
+        print (res.url)
+        print (res.status_code)
+        print (res.text)
+        if res.status_code == 200:
+            return self.dynamics(res.text)
+
+
+
+if __name__ == "__main__":
+    login = Login()
+    login.login(user="dfsdafsdf@qq.com", passwd="asdfasf")
+        
     
