@@ -18,8 +18,8 @@ data = {
     "commit": "Sign in",
     "utf8": "✓",
     "authenticity_token": authenticity_token,
-    "login": "286577399@qq.com",
-    "password": "Ln900318linan"
+    "login": "2865@qq.com",
+    "password": "Ln9an"
 }
 
 resp = req.post(session_url, data=data)
