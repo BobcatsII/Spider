@@ -65,4 +65,4 @@ class Login(object):
           
 if __name__ == "__main__":
     login = Login()
-    login.login(user="286577399@qq.com", passwd="Ln900318linan")
+    login.login(user="286@qq.com", passwd="Ln9nan")
